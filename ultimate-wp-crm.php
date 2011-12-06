@@ -25,3 +25,10 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
+define( 'UWPCRM_ROOT', dirname( __FILE__ ) );
+
+//Include the setup
+require_once UWPCRM_ROOT . '/conf/setup.php';
+
+//Global Variables
+$uwpcrm_options = get_option( 'uwpcrm_settings');

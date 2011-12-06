@@ -1,5 +1,7 @@
 <?php
-//Functions etc to be run on plugin deletion.
+/*
+	I hate plugins that don't clean up after themselves!
+*/
 
 if ( defined( 'WP_UNINSTALL_PLUGIN' ) ) :
 

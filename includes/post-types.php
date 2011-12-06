@@ -27,7 +27,7 @@ function uwpcrm_register_cpt_account() {
         'taxonomies' => array( 'account_type' ),
         'public' => true,
         'show_ui' => true,
-        'show_in_menu' => false,
+        'show_in_menu' => 'uwpcrm-options',
         
         
         'show_in_nav_menus' => false,

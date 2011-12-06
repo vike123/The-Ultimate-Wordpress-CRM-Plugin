@@ -7,11 +7,22 @@ require_once UWPCRM_ROOT . '/includes/post-types.php';
 function uwpcrm_setup_menus() {
 	add_menu_page( __( 'Ultimate WP CRM', 'uwpcrm' ), __( 'WP CRM', 'uwpcrm' ), 'manage_options', 'uwpcrm-options', 'uwpcrm_admin_options' );
 	//Add the sub panels @TODO MAKE IT WORK!
-	add_submenu_page( 'uwpcrm-options', __( 'Accounts', 'uwpcrm' ), __( 'Accounts', 'uwpcrm' ), 'manage_options', 'uwpcrm-accounts', 'edit.php?post_type=uwpcrm_account' );
-	add_submenu_page( 'uwpcrm-options', __( 'Account Types', 'uwpcrm' ), __(' Account Types', 'uwpcrm' ), 'manage_options', 'uwpcrm-account-types', 'edit-tags.php?taxonomy=uwpcrm_account_type' );
+	add_submenu_page( 'uwpcrm-options', __( 'Account Types', 'uwpcrm' ), __(' Account Types', 'uwpcrm' ), 'manage_options', 'edit-tags.php?taxonomy=uwpcrm_account_type' );
+	add_submenu_page( 'uwpcrm-options', __( 'Settings', 'uwpcrm' ), __( 'Settings', 'uwpcrm' ), 'manage_options', 'uwpcrm-settings', 'uwpcrm_admin_options' );
 }
 
 add_action( 'admin_menu', 'uwpcrm_setup_menus' );
+
+// highlight the proper top level menu because Wordpress doesn't let us do this already!
+function uwpcrm_tax_menu_correction( $parent_file ) {
+	global $current_screen;
+	$taxonomy = $current_screen->taxonomy;
+	if ( strstr($taxonomy, 'uwpcrm') )
+		$parent_file = 'uwpcrm-options';
+	return $parent_file;
+}
+
+//add_action( 'parent_file', 'uwpcrm_tax_menu_correction' );
 
 //Add the options page
 function uwpcrm_admin_options() {

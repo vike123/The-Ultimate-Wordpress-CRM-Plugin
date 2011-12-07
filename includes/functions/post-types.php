@@ -5,9 +5,9 @@
 ***************************/
 
 //Register Account Types Custom Taxonomy
-add_action( 'init', 'vtp_register_taxonomy_account_type' );
+add_action( 'init', 'uwpcrm_register_taxonomy_account_type' );
 
-function vtp_register_taxonomy_account_type() {
+function uwpcrm_register_taxonomy_account_type() {
 
     $labels = array( 
         'name' => _x( 'Account Types', 'account type' ),
@@ -44,9 +44,9 @@ function vtp_register_taxonomy_account_type() {
 }
 
 //Register our Account CPT
-add_action( 'init', 'vtp_register_cpt_account' );
+add_action( 'init', 'uwpcrm_register_cpt_account' );
 
-function vtp_register_cpt_account() {
+function uwpcrm_register_cpt_account() {
 
     $labels = array( 
         'name' => _x( 'Accounts', 'account' ),
@@ -88,9 +88,9 @@ function vtp_register_cpt_account() {
 }
 
 //Register Service Types Custom Taxonomy
-add_action( 'init', 'vtp_register_taxonomy_service_type' );
+add_action( 'init', 'uwpcrm_register_taxonomy_service_type' );
 
-function vtp_register_taxonomy_service_type() {
+function uwpcrm_register_taxonomy_service_type() {
 
     $labels = array( 
         'name' => _x( 'Service Types', 'service type' ),
@@ -127,9 +127,9 @@ function vtp_register_taxonomy_service_type() {
 }
 
 //Register our service CPT
-add_action( 'init', 'vtp_register_cpt_service' );
+add_action( 'init', 'uwpcrm_register_cpt_service' );
 
-function vtp_register_cpt_service() {
+function uwpcrm_register_cpt_service() {
 
     $labels = array( 
         'name' => _x( 'Services', 'service' ),

@@ -1,17 +1,17 @@
 <?php
 //Adds additional fields to the user profiles
 
-add_action( 'show_user_profile', 'vtp_extra_profile_fields' );
-add_action( 'edit_user_profile', 'vtp_extra_profile_fields' );
+add_action( 'show_user_profile', 'uwpcrm_extra_profile_fields' );
+add_action( 'edit_user_profile', 'uwpcrm_extra_profile_fields' );
 
-function vtp_extra_profile_fields( $user ) {
+function uwpcrm_extra_profile_fields( $user ) {
 	?>
 	
-	<h3>Profile Information</h3>
+	<h3><?php echo _e( 'Profile Information', 'uwpcrm' );?></h3>
 	
 	<table class="form-table">
 		<tr>
-			<th><label for="account">Account</label></th>
+			<th><label for="account"><?php echo _e( 'Account', 'uwpcrm' );?></label></th>
 			<td>
 			<?php 
 			$args = array(
@@ -36,10 +36,10 @@ function vtp_extra_profile_fields( $user ) {
 
 //Saves the additional Field Information
 
-add_action( 'personal_options_update', 'vtp_save_extra_profile_fields' );
-add_action( 'edit_user_profile_update', 'vtp_save_extra_profile_fields' );
+add_action( 'personal_options_update', 'uwpcrm_save_extra_profile_fields' );
+add_action( 'edit_user_profile_update', 'uwpcrm_save_extra_profile_fields' );
 
-function vtp_save_extra_profile_fields( $user_id ) {
+function uwpcrm_save_extra_profile_fields( $user_id ) {
 	if ( ! current_user_can( 'edit_user', $user_id ) )
 		return false;
 		
@@ -48,14 +48,14 @@ function vtp_save_extra_profile_fields( $user_id ) {
 
 //Update the contact methods
 
-function vtp_extended_contact_info($user_contactmethods) {  
+function uwpcrm_extended_contact_info($user_contactmethods) {  
 
 	$user_contactmethods = array(
-		'telephone' => 'Telephone',
-		'mobilephone' => 'Mobile Phone',
+		'telephone' => __( 'Telephone', 'uwpcrm' ),
+		'mobilephone' => __( 'Mobile Phone', 'uwpcrm' ),
 		);  
 
 	return $user_contactmethods;
 }  
 
-add_filter('user_contactmethods', 'vtp_extended_contact_info');	
+add_filter('user_contactmethods', 'uwpcrm_extended_contact_info');	

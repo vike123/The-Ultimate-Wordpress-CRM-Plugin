@@ -20,7 +20,7 @@ require_once 'meta-box-3.2.2.class.php'; //The class to handle our CPT Meta Boxe
  * Extend VTP_Meta_Box class
  * Add field type: 'taxonomy'
  */
-class VTP_Meta_Box_Taxonomy extends VTP_Meta_Box {
+class UWPCRM_Meta_Box_Taxonomy extends UWPCRM_Meta_Box {
 	
 	function add_missed_values() {
 		parent::add_missed_values();
@@ -69,7 +69,7 @@ class VTP_Meta_Box_Taxonomy extends VTP_Meta_Box {
  * Extend VTP_Meta_Box_Taxonomy class
  * Add field type: 'users'
  */
-class VTP_Meta_Box_Mojowill extends VTP_Meta_Box {
+class UWPCRM_Meta_Box_Mojowill extends UWPCRM_Meta_Box {
 	
 	//Get Users
 	function show_field_users( $field, $meta ) {
@@ -127,56 +127,56 @@ class VTP_Meta_Box_Mojowill extends VTP_Meta_Box {
 // prefix of meta keys, optional
 // use underscore (_) at the beginning to make keys hidden, for example $prefix = '_rw_';
 // you also can make prefix empty to disable it
-$prefix = '_vtp_';
+$prefix = '_uwpcrm_';
 
 $meta_boxes = array();
 
 //Meta Boxes for Accounts
 $meta_boxes[] = array(
 	'id' => 'primary_info',						// meta box id, unique per meta box
-	'title' => 'Primary Information',			// meta box title
+	'title' => __( 'Primary Information', 'uwpcrm' ),			// meta box title
 	'pages' => array('account'),				// post types, accept custom post types as well, default is array('post'); optional
 	'context' => 'normal',						// where the meta box appear: normal (default), advanced, side; optional
 	'priority' => 'high',						// order of meta box: high (default), low; optional
 
 	'fields' => array(							// list of meta fields
 		array(
-			'name' => 'Email',					// field name
+			'name' => __( 'Email', 'uwpcrm' ),					// field name
 			'id' => $prefix . 'email',				// field id, i.e. the meta key
 			'type' => 'text',						// text box
 		),
 		array(
-			'name' => 'Website',
+			'name' => __( 'Website', 'uwpcrm' ),
 			'id' => $prefix . 'url',
 			'type' => 'text'
 		),
 		array(
-			'name' => 'Telephone Number',
+			'name' => __( 'Telephone Number', 'uwpcrm' ),
 			'id' => $prefix . 'telephone',
 			'type' => 'text',
 		),
 		array(
-			'name' => 'Address Line 1',
+			'name' => __( 'Address Line 1', 'uwpcrm' ),
 			'id' => $prefix . 'address1',
 			'type' => 'text',
 		),
 		array(
-			'name' => 'Address Line 2',
+			'name' => __( 'Address Line 2', 'uwpcrm' ),
 			'id' => $prefix . 'address2',
 			'type' => 'text',
 		),
 		array(
-			'name' => 'Town/City',
+			'name' => __( 'Town/City', 'uwpcrm' ),
 			'id' => $prefix . 'city',
 			'type' => 'text',
 		),
 		array(
-			'name' => 'County',
+			'name' => __( 'County', 'uwpcrm' ),
 			'id' => $prefix . 'county',
 			'type' => 'text',
 		),
 		array(
-			'name' => 'Country',
+			'name' => __( 'Country', 'uwpcrm' ),
 			'id' => $prefix . 'country',
 			'type' => 'select',						// select box
 			'options' => array(						// array of key => value pairs for select box
@@ -423,7 +423,7 @@ $meta_boxes[] = array(
 			'std' => array('GB'),						// default value, can be string (single value) or array (for both single and multiple values)
 		),
 		array(
-			'name' => 'Account Manager',
+			'name' => __( 'Account Manager', 'uwpcrm' ),
 			'id' => $prefix . 'account_manager',
 			'type' => 'users',							// lists users
 			'options' => array(
@@ -431,7 +431,7 @@ $meta_boxes[] = array(
 				'type' => 'select',						// how to show users? 'select' (default) or 'checkbox_list'
 				'args' => array()						// arguments to query users, see http://goo.gl/tkq5o
 			),
-			'desc' => 'Choose A User'
+			'desc' => __( 'Choose A User as the account manager', 'uwpcrm' )
 		)			
 	)
 );
@@ -439,14 +439,14 @@ $meta_boxes[] = array(
 //Meta Boxes for Service
 $meta_boxes[] = array(
 	'id' => 'service_info',						// meta box id, unique per meta box
-	'title' => 'Service Information',			// meta box title
+	'title' => __( 'Service Information', 'uwpcrm' ),			// meta box title
 	'pages' => array('service'),				// post types, accept custom post types as well, default is array('post'); optional
 	'context' => 'normal',						// where the meta box appear: normal (default), advanced, side; optional
 	'priority' => 'high',						// order of meta box: high (default), low; optional
 
 	'fields' => array(							// list of meta fields
 		array(
-			'name' => 'Account',
+			'name' => __( 'Account', 'uwpcrm' ),
 			'id' => $prefix . 'service_account',
 			'type' => 'posts',							// lists users
 			'options' => array(
@@ -454,13 +454,13 @@ $meta_boxes[] = array(
 				'type' => 'select',						// how to show users? 'select' (default) or 'checkbox_list'
 				'args' => array()						// arguments to query users, see http://goo.gl/tkq5o
 			),
-			'desc' => 'Choose an account'
+			'desc' => __( 'Choose an account', 'uwpcrm' )
 		)			
 	)
 );
 
 foreach ( $meta_boxes as $meta_box ) {
-	new VTP_Meta_Box_Mojowill( $meta_box );
+	new UWPCRM_Meta_Box_Mojowill( $meta_box );
 }
 
 /********************* END DEFINITION OF META BOXES ***********************/
@@ -472,7 +472,7 @@ foreach ( $meta_boxes as $meta_box ) {
  * Define ALL validation methods inside this class
  * Use the names of these methods in the definition of meta boxes (key 'validate_func' of each field)
  */
-class VTP_Meta_Box_Validate {
+class UWPCRM_Meta_Box_Validate {
 	function check_name($text) {
 		if ( $text == 'Anh Tran' ) {
 			return 'He is Rilwis';

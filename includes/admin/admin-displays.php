@@ -9,7 +9,7 @@
 **/
 
 //Define Columns
-function vpt_edit_account_columns( $columns ) {
+function uwpcrm_edit_account_columns( $columns ) {
 	$columns = array(
 		'cb' => '<input type="checkbox" />',
 		'title' => 'Account',
@@ -21,7 +21,7 @@ function vpt_edit_account_columns( $columns ) {
 	return $columns;
 } 
 
-add_filter( 'manage_edit-account_columns', 'vpt_edit_account_columns' );
+add_filter( 'manage_edit-account_columns', 'uwpcrm_edit_account_columns' );
 
 //Define contents
 function uwpcrm_manage_custom_columns( $column ) {

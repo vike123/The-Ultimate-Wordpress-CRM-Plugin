@@ -18,8 +18,8 @@
 /**
  * Meta Box class
  */
-if ( ! class_exists( 'VTP_Meta_Box' ) ) :
-	class VTP_Meta_Box {
+if ( ! class_exists( 'UWPCRM_Meta_Box' ) ) :
+	class UWPCRM_Meta_Box {
 	
 		protected $_meta_box;
 		protected $_fields;

@@ -81,7 +81,7 @@ function uwpcrm_init(){
 
 // Add menu page
 function uwpcrm_add_options_page() {
-	add_options_page( __( 'Ultimate Wordpress CRM Options', 'uwpcrm' ), __( 'UWPCRM Options', 'uwpcrm' ), 'manage_options', __FILE__, 'uwpcrm_render_form');
+	add_menu_page( __( 'Ultimate Wordpress CRM Options', 'uwpcrm' ), __( 'UWPCRM', 'uwpcrm' ), 'manage_options', 'uwpcrm-options', 'uwpcrm_render_form' );
 }
 
 // ------------------------------------------------------------------------------
@@ -218,19 +218,6 @@ function uwpcrm_validate_options($input) {
 	return $input;
 }
 
-add_filter( 'plugin_action_links', 'uwpcrm_plugin_action_links', 10, 2 );
-// Display a Settings link on the main Plugins page
-function uwpcrm_plugin_action_links( $links, $file ) {
-
-	if ( $file == plugin_basename( __FILE__ ) ) {
-		$uwpcrm_links = '<a href="'.get_admin_url().'options-general.php?page=plugin-options-starter-kit/plugin-options-starter-kit.php">'.__('Settings').'</a>';
-		// make the 'Settings' link appear first
-		array_unshift( $links, $uwpcrm_links );
-	}
-
-	return $links;
-}
-
 // ------------------------------------------------------------------------------
 // SAMPLE USAGE FUNCTIONS:
 // ------------------------------------------------------------------------------
@@ -240,11 +227,10 @@ function uwpcrm_plugin_action_links( $links, $file ) {
 // ------------------------------------------------------------------------------
 
 // As a demo let's add a paragraph of the select box value to the content output
-add_filter( "the_content", "uwpcrm_add_content" );
+//add_filter( "the_content", "uwpcrm_add_content" );
 function uwpcrm_add_content($text) {
 	$options = get_option('uwpcrm_options');
 	$select = $options['drp_select_box'];
 	$text = "<p style=\"color: #777;border:1px dashed #999; padding: 6px;\">Select box Plugin option is: {$select}</p>{$text}";
 	return $text;
 }
-//add_action( 'admin_init', 'uwpcrm_register_settings');

@@ -38,6 +38,10 @@ Contact = A individual entity assigned to an account, for example John is a Cont
 
 For IF, FOREACH, WHILE etc suggest using : and endif; etc as keep the code tidier!
 
+
+== Todo ==
+* Group Custom Post Types and Taxonomies into a single group menu (will probably then use the new nodes in WP3.3)
+
 == Changelog ==
 
 = 0.1 = 

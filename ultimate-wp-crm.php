@@ -41,6 +41,7 @@ require_once UWPCRM_ROOT . '/includes/admin/meta-boxes/meta-box-usage.php'; //De
 require_once UWPCRM_ROOT . '/includes/functions/post-types.php'; //Sets up Custom post types and taxonomies
 require_once UWPCRM_ROOT . '/includes/functions/users.php'; //Sets user profile fields
 
+include UWPCRM_ROOT . '/includes/mojo-meta-boxes/mojo-meta-boxes.php';
 /***************************
 * Plugin Setup
 ***************************/

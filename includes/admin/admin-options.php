@@ -2,8 +2,35 @@
 /***************************
 * Admin area options page
 ***************************/
+/* 
+	Thanks to David Gwyer of http://www.presscoders.com for his Plugin Options Starter Kit which this file is built from
+*/
 
+///////////////////////////////////////////////////////////////////////
 // STILL PLAYING WITH THIS BECAUSE I DON'T REALLY KNOW WHAT I'M DOING!
+/////////////////////////////////////////////////////////////////////
+
+// ------------------------------------------------------------------------
+// REQUIRE MINIMUM VERSION OF WORDPRESS:                                               
+// ------------------------------------------------------------------------
+// THIS IS USEFUL IF YOU REQUIRE A MINIMUM VERSION OF WORDPRESS TO RUN YOUR
+// PLUGIN. IN THIS PLUGIN THE WP_EDITOR() FUNCTION REQUIRES WORDPRESS 3.3 
+// OR ABOVE. ANYTHING LESS SHOWS A WARNING AND THE PLUGIN IS DEACTIVATED.                    
+// ------------------------------------------------------------------------
+
+function requires_wordpress_version() {
+	global $wp_version;
+	$plugin = plugin_basename( __FILE__ );
+	$plugin_data = get_plugin_data( __FILE__, false );
+
+	if ( version_compare($wp_version, "3.3", "<" ) ) {
+		if( is_plugin_active($plugin) ) {
+			deactivate_plugins( $plugin );
+			wp_die( "'".$plugin_data['Name']."' requires WordPress 3.3 or higher, and has been deactivated! Please upgrade WordPress and try again.<br /><br />Back to <a href='".admin_url()."'>WordPress admin</a>." );
+		}
+	}
+}
+add_action( 'admin_init', 'requires_wordpress_version' );
 
 
 // ------------------------------------------------------------------------
@@ -101,8 +128,8 @@ function uwpcrm_render_form() {
 		
 		<!-- Display Plugin Icon, Header, and Description -->
 		<div class="icon32" id="icon-options-general"><br></div>
-		<h2><?php echo _e( 'Plugin Options Starter Kit', 'uwpcrm' );?></h2>
-		<p><?php echo _e( 'Below is a collection of sample controls you can use in your own Plugins. Or, you can analyse the code and learn how all the most common controls can be added to a Plugin options form. See the code for more details, it is fully commented.', 'uwpcrm' );?></p>
+		<h2><?php echo _e( 'Ultimate Wordpress CRM Plugin', 'uwpcrm' );?></h2>
+		<p><?php echo _e( 'Below are some sample controls that will be amended during plugin development.', 'uwpcrm' );?></p>
 
 		<!-- Beginning of the Plugin Options Form -->
 		<form method="post" action="options.php">

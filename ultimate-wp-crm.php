@@ -38,8 +38,9 @@ require_once UWPCRM_ROOT . '/includes/admin/admin-options.php'; //Admin Page
 require_once UWPCRM_ROOT . '/includes/admin/admin-displays.php'; //Admin Page
 require_once UWPCRM_ROOT . '/includes/admin/meta-boxes/meta-box-usage.php'; //Defines our CPT Meta Boxes
 
-require_once UWPCRM_ROOT . '/includes/functions/post-types.php'; //Sets up Custom post types and taxonomies
-require_once UWPCRM_ROOT . '/includes/functions/users.php'; //Sets user profile fields
+require_once UWPCRM_ROOT . '/includes/functions/accounts.php'; //Deals with Accounts module
+require_once UWPCRM_ROOT . '/includes/functions/services.php'; //Deals with Services module
+require_once UWPCRM_ROOT . '/includes/functions/users.php'; //Deals with users
 
 /***************************
 * Plugin Setup

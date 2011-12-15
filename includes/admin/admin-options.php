@@ -79,9 +79,11 @@ function uwpcrm_init(){
 // PAGE FOR YOUR PLUGIN TO THE SETTINGS MENU.
 // ------------------------------------------------------------------------------
 
-// Add menu page
+// Add menu pages
 function uwpcrm_add_options_page() {
 	add_menu_page( __( 'Ultimate Wordpress CRM Options', 'uwpcrm' ), __( 'UWPCRM', 'uwpcrm' ), 'manage_options', 'uwpcrm-options', 'uwpcrm_render_form' );
+	add_submenu_page( 'uwpcrm-options', __( 'Ultimate Wordpress CRM Options', 'uwpcrm' ), __( 'Options', 'uwpcrm' ), 'manage_options', 'uwpcrm-options', 'uwpcrm_render_form' );
+	add_submenu_page( 'uwpcrm-options', __( 'Account Types', 'uwpcrm' ), __( 'Account Types', 'uwpcrm' ), 'manage_options', '/edit-tags.php?taxonomy=account_type&post_type=account' );
 }
 
 // ------------------------------------------------------------------------------
